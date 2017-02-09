@@ -168,6 +168,16 @@ var _ = require(path.join(__dirname, '..', './lowbar.js'));
       });
   });
 
+  describe('#uniq', function () {
+      it('is a function', function() {
+        expect(_.uniq).to.be.a('function');
+      }); 
+      it('function should take at least 2 arguments', function() {
+        expect(_.uniq.length).to.equal(1);
+      });
+       
+  });
+
 
 
 });

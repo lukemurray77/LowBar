@@ -68,6 +68,10 @@ _.reject = function(list, predicate) {
   
 }
 
+_.uniq = function(array) {
+  
+}
+
 
 if (typeof module !== 'undefined') {
   module.exports = _;
