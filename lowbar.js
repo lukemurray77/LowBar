@@ -57,6 +57,18 @@ _.filter = function(list, predicate) {
   return arr;
 }
 
+_.reject = function(list, predicate) {
+  var arr = []
+  for (var i=0; i<list.length; i++) {
+    if (!predicate(list[i])) {
+      arr.push(list[i]);
+    }
+  }
+  return arr;
+  
+}
+
+
 if (typeof module !== 'undefined') {
   module.exports = _;
 }

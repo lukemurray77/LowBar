@@ -151,6 +151,22 @@ var _ = require(path.join(__dirname, '..', './lowbar.js'));
         expect(actual).to.eql(expected);
       });
   });
+  
+  describe('#reject', function () {
+      it('is a function', function() {
+        expect(_.reject).to.be.a('function');
+      }); 
+      it('function should take at least 2 arguments', function() {
+        expect(_.reject.length).to.equal(2);
+      });
+       it('function should return a new array that pass the predicate argument', function() {
+        var arr = [1,2,3,4,5,6,7,8,9,10];
+        var func = function isEven (num) {return num % 2 ===0}
+        var actual = _.reject(arr, func);
+        var expected = [1,3,5,7,9];
+        expect(actual).to.eql(expected);
+      });
+  });
 
 
 
