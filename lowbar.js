@@ -38,13 +38,23 @@ _.indexOf = function(array, value) {
   if (!Array.isArray(array)) {
     return -1
   }
-  
+
   for (var i =0; i<array.length; i++) {
     if (value === array[i]) {
       return i;
     }
   }
     return -1;
+}
+
+_.filter = function(list, predicate) {
+  var arr = []
+  for (var i=0; i<list.length; i++) {
+    if (predicate(list[i])) {
+      arr.push(list[i]);
+    }
+  }
+  return arr;
 }
 
 if (typeof module !== 'undefined') {

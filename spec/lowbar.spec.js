@@ -136,6 +136,22 @@ var _ = require(path.join(__dirname, '..', './lowbar.js'));
       
   });
 
+  describe('#filter', function () {
+      it('is a function', function() {
+        expect(_.filter).to.be.a('function');
+      }); 
+      it('function should take at least 2 arguments', function() {
+        expect(_.filter.length).to.equal(2);
+      });
+       it('function should return a new array that pass the predicate argument', function() {
+        var arr = [1,2,3,4,5,6,7,8,9,10];
+        var func = function isEven (num) {return num % 2 ===0}
+        var actual = _.filter(arr, func);
+        var expected = [2,4,6,8,10];
+        expect(actual).to.eql(expected);
+      });
+  });
+
 
 
 });
