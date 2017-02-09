@@ -80,6 +80,28 @@ var _ = require(path.join(__dirname, '..', './lowbar.js'));
         expect(actual).to.eql(expected);
       });
   });
+  
+  describe('#each', function () {
+      it('is a function', function() {
+        expect(_.each).to.be.a('function');
+      }); 
+      it('function should take at least 2 arguments', function() {
+        expect(_.each.length).to.equal(2);
+      });
+      it('if an array is the first argument, pass the element, i, list into the iteratee', function() {
+        function timesTwo(number, ind, list) { return number * 2}; 
+        var arr = [1,2,3]
+        var actual = _.each(arr, timesTwo);
+        expect(actual).to.equal(arr);
+      });
+      it('if an object is the first argument, ', function() {
+        function timesTwo(number) { return number * 2}; 
+        var obj = {a:1, b:2, c:3};
+        var actual = _.each(obj, timesTwo);
+        expect(actual).to.equal(obj);
+      });
+      
+  });
 
 
 
