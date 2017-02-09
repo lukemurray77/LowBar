@@ -34,10 +34,19 @@ _.each = function(list, iteratee) {
 
 }
 
-var arr = [1,2,3]
-function timesTwo(number, ind, list) { return number * 2};
+_.indexOf = function(array, value) {
+  if (!Array.isArray(array)) {
+    return -1
+  }
+  
+  for (var i =0; i<array.length; i++) {
+    if (value === array[i]) {
+      return i;
+    }
+  }
+    return -1;
+}
 
-console.log(_.each(arr, timesTwo));
 if (typeof module !== 'undefined') {
   module.exports = _;
 }
