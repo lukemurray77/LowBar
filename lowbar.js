@@ -100,20 +100,23 @@ _.map = function(list, iteratee) {
       mappedObj[key] = iteratee(list[key]);
     }
     return mappedObj
-
-
-
-
-
-
-
   }
   return [];
-
-
 }
-function timesTwo(number, ind, list) { return number * 2}; 
-console.log(_.map({a: 1, b: 2, c: 3}, timesTwo))
+
+_.pluck = function(list, propertyName) {
+  if(Array.isArray(list)) {
+  
+    var pluckedArr = [];
+    for( var i =0; i<list.length; i++) {
+      pluckedArr.push(list[i][propertyName]);
+    }
+    return pluckedArr
+  }
+  return [];
+}
+
+
 
 if (typeof module !== 'undefined') {
   module.exports = _;

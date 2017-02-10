@@ -188,10 +188,10 @@ describe('_', function () {
 
   describe('#map', function () {
     it('is a function', function () {
-      expect(_.each).to.be.a('function');
+      expect(_.map).to.be.a('function');
     });
     it('function should take at least 2 arguments', function () {
-      expect(_.each.length).to.be.above(1);
+      expect(_.map.length).to.be.above(1);
     });
     it('first argument should be either an array, object or string, if not return []', function () {
       function timesTwo(number, ind, list) { return number * 2 };
@@ -210,6 +210,27 @@ describe('_', function () {
       expect(actual).to.eql(expected);
     });
 
+  });
+
+  describe('#pluck', function () {
+    it('is a function', function () {
+      expect(_.pluck).to.be.a('function');
+    });
+    it('function should take at least 2 arguments', function () {
+      expect(_.pluck.length).to.be.above(1);
+    });
+     it('function should return an empty array if the first argument is not an array', function () {
+      var expected = [];
+      var actual = _.pluck(1234, 'name');
+      expect(actual).to.eql(expected)
+    });
+    it('function should take an array of objects and return an array of key values in the objects', function () {
+      var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+      var expected = ["moe", "larry", "curly"];
+      var actual = _.pluck(stooges, 'name');
+      expect(actual).to.eql(expected)
+    });
+  
   });
 
 
