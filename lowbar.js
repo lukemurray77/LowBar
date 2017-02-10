@@ -83,12 +83,37 @@ _.uniq = function (array) {
 
   } 
   return [];
+}
+
+_.map = function(list, iteratee) {
+  if(typeof list === 'object' || typeof list === 'string') {
+    if(Array.isArray(list) || typeof list === 'string') {
+      var mappedArr = [];
+      for(var i = 0; i < list.length; i++){
+        var val = iteratee(list[i], i, list )
+        mappedArr.push((val))
+      }
+      return mappedArr;
+    } else
+    var mappedObj = {};
+    for(var key in list) {
+      mappedObj[key] = iteratee(list[key]);
+    }
+    return mappedObj
 
 
+
+
+
+
+
+  }
+  return [];
 
 
 }
-
+function timesTwo(number, ind, list) { return number * 2}; 
+console.log(_.map({a: 1, b: 2, c: 3}, timesTwo))
 
 if (typeof module !== 'undefined') {
   module.exports = _;
