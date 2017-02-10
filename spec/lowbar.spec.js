@@ -175,6 +175,14 @@ var _ = require(path.join(__dirname, '..', './lowbar.js'));
       it('function should take at least 2 arguments', function() {
         expect(_.uniq.length).to.equal(1);
       });
+      it('returns an empty array if an object is passed as the first argument', function() {
+        expect(_.uniq({})).to.eql([]);
+      });
+      it('returns a duplicate free version of the array passed as the first argument.', function() {
+        var expected = [1,2,4,3];
+        var actual = _.uniq([1,2,1,4,1,3]);
+        expect(actual).to.eql(expected);
+      });
        
   });
 
