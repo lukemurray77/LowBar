@@ -233,6 +233,27 @@ describe('_', function () {
   
   });
 
+  describe('#reduce', function () {
+    it('is a function', function () {
+      expect(_.reduce).to.be.a('function');
+    });
+    it('function should take at least 2 arguments', function () {
+      expect(_.reduce.length).to.be.above(1);
+    });
+    it('should return a single value from a list of values as a result of the iteratee', function () {
+      function add(memo, value) { return memo + value };
+      var expected = 15;
+      var actual = _.reduce([1, 2, 3, 4, 5], add, 0);
+      expect(actual).to.eql(expected);
+    });
+    it('should return a new array of iteratee values when the starting value is an array', function () {
+      function double(value) { return value * 2 };
+      var expected = [2, 4, 6, 8, 10];
+      var actual = _.reduce([1, 2, 3, 4, 5], double, []);
+      expect(actual).to.eql(expected);
+    });
+  });
+
 
 
 });

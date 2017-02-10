@@ -116,7 +116,24 @@ _.pluck = function(list, propertyName) {
   return [];
 }
 
+_.reduce = function (list, iteratee, memo) {
+  if (Array.isArray(memo)) {
+      for (var i=0; i< list.length; i++) {
+        memo.push(iteratee(list[i], i, list, memo));
+      }
+    return memo;
+  }
+  else{
+    for (var i=0; i< list.length; i++) {
+      memo = iteratee(memo, list[i], i, list);
+    }
+    return memo;
+  }
+}
 
+function add(memo, value) { return memo + value };
+
+console.log(_.reduce([1, 2, 3, 4, 5], add, 0))
 
 if (typeof module !== 'undefined') {
   module.exports = _;
