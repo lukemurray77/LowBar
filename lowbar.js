@@ -73,7 +73,7 @@ _.uniq = function (array) {
     var arr = [];
 
     for (var i = 0; i < array.length; i++) {
-      if(_.indexOf(arr, array[i]) === -1){
+      if (_.indexOf(arr, array[i]) === -1) {
         arr.push(array[i]);
       }
 
@@ -81,22 +81,22 @@ _.uniq = function (array) {
     }
     return arr;
 
-  } 
+  }
   return [];
 }
 
-_.map = function(list, iteratee) {
-  if(typeof list === 'object' || typeof list === 'string') {
-    if(Array.isArray(list) || typeof list === 'string') {
+_.map = function (list, iteratee) {
+  if (typeof list === 'object' || typeof list === 'string') {
+    if (Array.isArray(list) || typeof list === 'string') {
       var mappedArr = [];
-      for(var i = 0; i < list.length; i++){
-        var val = iteratee(list[i], i, list )
+      for (var i = 0; i < list.length; i++) {
+        var val = iteratee(list[i], i, list)
         mappedArr.push((val))
       }
       return mappedArr;
     } else
-    var mappedObj = {};
-    for(var key in list) {
+      var mappedObj = {};
+    for (var key in list) {
       mappedObj[key] = iteratee(list[key]);
     }
     return mappedObj
@@ -104,11 +104,11 @@ _.map = function(list, iteratee) {
   return [];
 }
 
-_.pluck = function(list, propertyName) {
-  if(Array.isArray(list)) {
-  
+_.pluck = function (list, propertyName) {
+  if (Array.isArray(list)) {
+
     var pluckedArr = [];
-    for( var i =0; i<list.length; i++) {
+    for (var i = 0; i < list.length; i++) {
       pluckedArr.push(list[i][propertyName]);
     }
     return pluckedArr
@@ -117,23 +117,54 @@ _.pluck = function(list, propertyName) {
 }
 
 _.reduce = function (list, iteratee, memo) {
-  if (Array.isArray(memo)) {
-      for (var i=0; i< list.length; i++) {
-        memo.push(iteratee(list[i], i, list, memo));
-      }
-    return memo;
-  }
-  else{
-    for (var i=0; i< list.length; i++) {
-      memo = iteratee(memo, list[i], i, list);
+  
+  if (Array.isArray(list)) {
+    for (var i = 0; i < list.length; i++) {
+      memo = iteratee(memo, list[i])
     }
-    return memo;
+  return memo;
+} else
+  for(var key in list) {
+    memo = iteratee(memo, list[key]);
   }
+  return memo;
+
 }
 
-function add(memo, value) { return memo + value };
 
-console.log(_.reduce([1, 2, 3, 4, 5], add, 0))
+
+_.contains = function (list, value) {
+  if (arguments.length < 2 || !Array.isArray(list) || !typeof list === 'object') {
+    return false;
+  }
+
+  if (_.indexOf(list, value) !== -1) {
+    return true;
+  }
+
+  return false;
+
+}
+
+_.every = function (list, predicate) {
+  // if(arguments.length <= 1) {return true;};
+
+  if (Array.isArray(list)) {
+    for (var i = 0; i < list.length; i++) {
+      if (!predicate(list[i])) return false;
+    }
+  } else
+    for (var key in list) {
+      if(!predicate(list[key])) return false;
+      
+
+    }
+
+    return true;
+
+  // neeed to refactor so it works for objects
+}
+
 
 if (typeof module !== 'undefined') {
   module.exports = _;

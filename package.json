@@ -2,7 +2,9 @@
   "name": "lowbar",
   "private": true,
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "sinon": "^1.17.7"
+  },
   "scripts": {
     "test": "mocha ./spec/",
     "lint": "eslint ./",

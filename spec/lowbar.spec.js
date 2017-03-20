@@ -2,6 +2,8 @@
 var path = require('path');
 var expect = require('chai').expect;
 var _ = require(path.join(__dirname, '..', './lowbar.js'));
+var sinon = require('sinon');
+
 
 describe('_', function () {
   'use strict';
@@ -40,10 +42,6 @@ describe('_', function () {
       expect(_.first).to.be.a('function');
     });
 
-    // it('function must have a first argument that is an array', function () {
-    //   var expected
-    // });
-
     it('function returns the first element of a passed array', function () {
       var expected = 1;
       var actual = _.first([1, 2, 3]);
@@ -81,6 +79,8 @@ describe('_', function () {
     });
   });
 
+
+
   describe('#each', function () {
     it('is a function', function () {
       expect(_.each).to.be.a('function');
@@ -99,6 +99,14 @@ describe('_', function () {
       var obj = { a: 1, b: 2, c: 3 };
       var actual = _.each(obj, timesTwo);
       expect(actual).to.equal(obj);
+    });
+    it('should test the function runs on each element of the array', function () {
+      var spy = sinon.spy();
+
+      _.each('hello', spy)
+      expect(spy.callCount).to.equal(5);
+      expect(spy.firstCall.args).to.eql(['h', '0', 'hello']);
+      expect(spy.secondCall.args).to.eql(['e', '1', 'hello']);
     });
 
   });
@@ -219,18 +227,18 @@ describe('_', function () {
     it('function should take at least 2 arguments', function () {
       expect(_.pluck.length).to.be.above(1);
     });
-     it('function should return an empty array if the first argument is not an array', function () {
+    it('function should return an empty array if the first argument is not an array', function () {
       var expected = [];
       var actual = _.pluck(1234, 'name');
       expect(actual).to.eql(expected)
     });
     it('function should take an array of objects and return an array of key values in the objects', function () {
-      var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+      var stooges = [{ name: 'moe', age: 40 }, { name: 'larry', age: 50 }, { name: 'curly', age: 60 }];
       var expected = ["moe", "larry", "curly"];
       var actual = _.pluck(stooges, 'name');
       expect(actual).to.eql(expected)
     });
-  
+
   });
 
   describe('#reduce', function () {
@@ -240,30 +248,66 @@ describe('_', function () {
     it('function should take at least 2 arguments', function () {
       expect(_.reduce.length).to.be.above(1);
     });
-    it('should return a single value from a list of values as a result of the iteratee', function () {
-      function add(memo, value) { return memo + value };
+    it('should sum an array of values to return one number', function () {
+      function add(memo, num) { return memo += num }
       var expected = 15;
       var actual = _.reduce([1, 2, 3, 4, 5], add, 0);
       expect(actual).to.eql(expected);
     });
     it('should return a new array of iteratee values when the starting value is an array', function () {
-      function double(value) { return value * 2 };
+      function double(memo, value) {
+        memo.push(value * 2);
+        return memo;
+      };
       var expected = [2, 4, 6, 8, 10];
       var actual = _.reduce([1, 2, 3, 4, 5], double, []);
+      expect(actual).to.eql(expected);
+    });
+
+  });
+
+  describe('#contains', function () {
+    it('is a function', function () {
+      expect(_.contains).to.be.a('function');
+    });
+    it('takes 2 or more arguments', function () {
+      expect(_.contains.length).to.be.above(1);
+    });
+    it('takes an array or object as the first argument, otherwise returns false', function () {
+      expect(_.contains()).to.equal(false);
+      expect(_.contains(123)).to.equal(false);
+      expect(_.contains([12, 2, 3], 5)).to.equal(false);
+    });
+    it('returns true if the value provided in the second argument is present in the array', function () {
+      var expected = true;
+      var actual = _.contains([1, 2, 3, 4, 5], 4);
       expect(actual).to.eql(expected);
     });
   });
 
 
+  describe('#every', function () {
+    it('is a function', function () {
+      expect(_.every).to.be.a('function');
+    });
+    it('takes 1 or more arguments', function () {
+      expect(_.every.length).to.be.above(0);
+    });
+    it('should return true if all the values in the list pass the truth test provided in the second argument', function () {
+      function isEven(num) { return num % 2 === 0; };
+      var expected = false;
+      var actual = _.every([2, 4, 5], isEven);
+      expect(actual).to.equal(expected);
+      function wordLength(word) { return word.length > 5 };
+      var expected = true;
+      var wordsArr = ['helloworld', 'northcoders', 'iamacoder'];
+      var actual = _.every(wordsArr, wordLength);
+      expect(actual).to.equal(expected);
+    });
+    it('should work for objects', () => {
+    });
+
+  });
+
 
 });
-
-
-
-// describe('What component aspect are you testing?', function () {
-//   it('What should the feature do?', function () {
-//     var actual = 'What is the actual output?';
-//     var expected = 'What is the expected output?';
-//     expect(actual).to.equal(expected);
-//   });
-// });
