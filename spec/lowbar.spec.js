@@ -199,31 +199,27 @@ describe('#each', function () {
 
   });
 
-//   describe('#map', function () {
-//     it('is a function', function () {
-//       expect(_.map).to.be.a('function');
-//     });
-//     it('function should take at least 2 arguments', function () {
-//       expect(_.map.length).to.be.above(1);
-//     });
-//     it('first argument should be either an array, object or string, if not return []', function () {
-//       function timesTwo(number, ind, list) { return number * 2 };
-//       expect(_.map(123, timesTwo)).to.eql([]);
-//     });
-//     it('should return a new array of values created by passing each element to the iteratee', function () {
-//       function timesTwo(number, ind, list) { return number * 2 };
-//       var expected = [2, 4, 6];
-//       var actual = _.map([1, 2, 3], timesTwo);
-//       expect(actual).to.eql(expected);
-//     });
-//     it('should return a new object of key value pairs created by passing each value to the iteratee', function () {
-//       function timesTwo(number, ind, list) { return number * 2 };
-//       var expected = { a: 2, b: 4, c: 6 };
-//       var actual = _.map({ a: 1, b: 2, c: 3 }, timesTwo);
-//       expect(actual).to.eql(expected);
-//     });
+  describe.only('#map', function () {
+    it('is a function', function () {
+      expect(_.map).to.be.a('function');
+    });
+    it('function should take at least 2 arguments', function () {
+      expect(_.map.length).to.be.above(1);
+    });
+    it('should return a new array of values created by passing each element to the iteratee', function () {
+      function timesTwo(number, ind, list) { return number * 2 };
+      var expected = [2, 4, 6];
+      var actual = _.map([1, 2, 3], timesTwo);
+      expect(actual).to.eql(expected);
+    });
+    it('should return a new object of key value pairs created by passing each value to the iteratee', function () {
+      function timesTwo(number, ind, list) { return number * 2 };
+      var expected = [2,4,6];
+      var actual = _.map({ a: 1, b: 2, c: 3 }, timesTwo);
+      expect(actual).to.eql(expected);
+    });
 
-//   });
+  });
 
 //   describe('#pluck', function () {
 //     it('is a function', function () {
@@ -246,7 +242,7 @@ describe('#each', function () {
 
 //   });
 
-  describe.only('#reduce', function () {
+  describe('#reduce', function () {
     it('is a function', function () {
       expect(_.reduce).to.be.a('function');
     });

@@ -99,6 +99,20 @@ _.uniq = function (array, isSorted, iteratee) {
   return newArr;
 }
 
+_.map = function (list, iteratee, context) {
+  const newList = []
+  let i = 0;
+    _.each(list, function(x) {
+      newList.push(iteratee.apply(context, [x, i, list]));
+      i++
+    })
+  
+
+
+return newList
+
+}
+
 
 _.reduce = function (list, iteratee, memo, context) {
   if (!context) context = this;
@@ -109,11 +123,9 @@ _.reduce = function (list, iteratee, memo, context) {
         i++
         memo = iteratee.apply(context, [memo, list[i], i, list]);
       } else
-
         memo = iteratee.apply(context, [memo, list[i], i, list]);
     }
   } else {
-
     const keys = Object.keys(list);
     for (var i = 0; i < keys.length; i++) {
       if (memo === undefined) {
