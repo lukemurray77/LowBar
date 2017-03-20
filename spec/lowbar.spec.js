@@ -175,23 +175,29 @@ describe('#each', function () {
     });
   });
 
-//   describe('#uniq', function () {
-//     it('is a function', function () {
-//       expect(_.uniq).to.be.a('function');
-//     });
-//     it('function should take at least 2 arguments', function () {
-//       expect(_.uniq.length).to.equal(1);
-//     });
-//     it('returns an empty array if an object is passed as the first argument', function () {
-//       expect(_.uniq({})).to.eql([]);
-//     });
-//     it('returns a duplicate free version of the array passed as the first argument.', function () {
-//       var expected = [1, 2, 4, 3];
-//       var actual = _.uniq([1, 2, 1, 4, 1, 3]);
-//       expect(actual).to.eql(expected);
-//     });
+  describe('#uniq', function () {
+    it('is a function', function () {
+      expect(_.uniq).to.be.a('function');
+    });
+    it('function should take at least 2 arguments', function () {
+      expect(_.uniq.length).to.be.above(0);
+    });
+    it('returns an empty array if an object is passed as the first argument', function () {
+      expect(_.uniq({})).to.eql([]);
+    });
+    it('returns a duplicate free version of the array passed as the first argument.', function () {
+      var expected = [1, 2, 4, 3];
+      var actual = _.uniq([1, 2, 1, 4, 1, 3]);
+      expect(actual).to.eql(expected);
+    });
+    it('should work if optional iteratee is passed', () => {
+      const expected = [2, 4, 8, 6];
+      function timesTwo (x) {return x * 2};
+      const actual = _.uniq([1,1,2, 4, 3,3, 2,1], false, timesTwo)
+      expect(actual).to.eql(expected)
+    });
 
-//   });
+  });
 
 //   describe('#map', function () {
 //     it('is a function', function () {
@@ -240,30 +246,37 @@ describe('#each', function () {
 
 //   });
 
-//   describe('#reduce', function () {
-//     it('is a function', function () {
-//       expect(_.reduce).to.be.a('function');
-//     });
-//     it('function should take at least 2 arguments', function () {
-//       expect(_.reduce.length).to.be.above(1);
-//     });
-//     it('should sum an array of values to return one number', function () {
-//       function add(memo, num) { return memo += num }
-//       var expected = 15;
-//       var actual = _.reduce([1, 2, 3, 4, 5], add, 0);
-//       expect(actual).to.eql(expected);
-//     });
-//     it('should return a new array of iteratee values when the starting value is an array', function () {
-//       function double(memo, value) {
-//         memo.push(value * 2);
-//         return memo;
-//       };
-//       var expected = [2, 4, 6, 8, 10];
-//       var actual = _.reduce([1, 2, 3, 4, 5], double, []);
-//       expect(actual).to.eql(expected);
-//     });
+  describe.only('#reduce', function () {
+    it('is a function', function () {
+      expect(_.reduce).to.be.a('function');
+    });
+    it('function should take at least 2 arguments', function () {
+      expect(_.reduce.length).to.be.above(1);
+    });
+    it('should sum an array of values to return one number', function () {
+      function add(memo, num) { return memo += num }
+      var expected = 545;
+      var actual = _.reduce([34, 23, 342, 123, 23], add);
+      expect(actual).to.equal(expected);
+    });
 
-//   });
+    it('should return a new array of iteratee values when the starting value is an array', function () {
+      function double(memo, value) {
+        memo.push(value * 2);
+        return memo;
+      };
+      var expected = [2, 4, 6, 8, 10];
+      var actual = _.reduce([1, 2, 3, 4, 5], double, []);
+      expect(actual).to.eql(expected);
+    });
+    it('should work for objects', () => {
+      function add(memo, num) { return memo += num }
+      var expected = 545;
+      var actual = _.reduce({a:34, b:23, c:342, d:123, e:23}, add);
+      expect(actual).to.equal(expected);
+    });
+
+  });
 
 //   describe('#contains', function () {
 //     it('is a function', function () {

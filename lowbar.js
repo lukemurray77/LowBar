@@ -66,7 +66,7 @@ function binarySearch(list, value) {
 }
 
 _.filter = function (list, predicate, context) {
-  if(!context) context = this;
+  if (!context) context = this;
   const newArr = [];
   for (let i = 0; i < list.length; i++) {
     if (predicate.call(context, list[i])) newArr.push(list[i]);
@@ -75,13 +75,58 @@ _.filter = function (list, predicate, context) {
 }
 
 _.reject = function (list, predicate, context) {
-  if(!context) context = this;
+  if (!context) context = this;
   const newArr = [];
   for (let i = 0; i < list.length; i++) {
     if (!predicate.call(context, list[i])) newArr.push(list[i]);
   }
   return newArr
 }
+
+
+
+_.uniq = function (array, isSorted, iteratee) {
+  const newArr = [];
+
+  for (let i = 0; i < array.length; i++) {
+    if (iteratee) {
+      if (_.indexOf(newArr, iteratee(array[i])) === -1) newArr.push(iteratee(array[i]));
+    } else
+      for (let i = 0; i < array.length; i++) {
+        if (_.indexOf(newArr, array[i]) === -1) newArr.push(array[i]);
+      }
+  }
+  return newArr;
+}
+
+
+_.reduce = function (list, iteratee, memo, context) {
+  if (!context) context = this;
+  if (Array.isArray(list)) {
+    for (let i = 0; i < list.length; i++) {
+      if (memo === undefined) {
+        memo = list[i];
+        i++
+        memo = iteratee.apply(context, [memo, list[i], i, list]);
+      } else
+
+        memo = iteratee.apply(context, [memo, list[i], i, list]);
+    }
+  } else {
+
+    const keys = Object.keys(list);
+    for (var i = 0; i < keys.length; i++) {
+      if (memo === undefined) {
+        memo = list[keys[i]];
+        i++
+        memo = iteratee.apply(context, [memo, list[keys[i]], i, list]);
+      } else
+        memo = iteratee.apply(context, [memo, list[keys[i]], i, list]);
+    }
+  }
+  return memo;
+}
+
 
 
 
