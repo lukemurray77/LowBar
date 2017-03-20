@@ -221,26 +221,26 @@ describe('#each', function () {
 
   });
 
-//   describe('#pluck', function () {
-//     it('is a function', function () {
-//       expect(_.pluck).to.be.a('function');
-//     });
-//     it('function should take at least 2 arguments', function () {
-//       expect(_.pluck.length).to.be.above(1);
-//     });
-//     it('function should return an empty array if the first argument is not an array', function () {
-//       var expected = [];
-//       var actual = _.pluck(1234, 'name');
-//       expect(actual).to.eql(expected)
-//     });
-//     it('function should take an array of objects and return an array of key values in the objects', function () {
-//       var stooges = [{ name: 'moe', age: 40 }, { name: 'larry', age: 50 }, { name: 'curly', age: 60 }];
-//       var expected = ["moe", "larry", "curly"];
-//       var actual = _.pluck(stooges, 'name');
-//       expect(actual).to.eql(expected)
-//     });
+  describe.only('#pluck', function () {
+    it('is a function', function () {
+      expect(_.pluck).to.be.a('function');
+    });
+    it('function should take at least 2 arguments', function () {
+      expect(_.pluck.length).to.be.above(1);
+    });
+    it('function should return an empty array if the first argument is not an array', function () {
+      var expected = [];
+      var actual = _.pluck(1234, 'name');
+      expect(actual).to.eql(expected)
+    });
+    it('function should take an array of objects and return an array of key values in the objects', function () {
+      var stooges = [{ name: 'moe', age: 40 }, { name: 'larry', age: 50 }, { name: 'curly', age: 60 }];
+      var expected = ["moe", "larry", "curly"];
+      var actual = _.pluck(stooges, 'name');
+      expect(actual).to.eql(expected)
+    });
 
-//   });
+  });
 
   describe('#reduce', function () {
     it('is a function', function () {
@@ -274,7 +274,7 @@ describe('#each', function () {
 
   });
 
-  describe.only('#extend', function () {
+  describe('#extend', function () {
    it('should be a function', function () {
      expect(_.extend).to.be.a("function");
    });
@@ -298,24 +298,25 @@ describe('#each', function () {
    });
  });
 
-//   describe('#contains', function () {
-//     it('is a function', function () {
-//       expect(_.contains).to.be.a('function');
-//     });
-//     it('takes 2 or more arguments', function () {
-//       expect(_.contains.length).to.be.above(1);
-//     });
-//     it('takes an array or object as the first argument, otherwise returns false', function () {
-//       expect(_.contains()).to.equal(false);
-//       expect(_.contains(123)).to.equal(false);
-//       expect(_.contains([12, 2, 3], 5)).to.equal(false);
-//     });
-//     it('returns true if the value provided in the second argument is present in the array', function () {
-//       var expected = true;
-//       var actual = _.contains([1, 2, 3, 4, 5], 4);
-//       expect(actual).to.eql(expected);
-//     });
-//   });
+  describe('#contains', function () {
+    it('is a function', function () {
+      expect(_.contains).to.be.a('function');
+    });
+    it('takes 2 or more arguments', function () {
+      expect(_.contains.length).to.be.above(1);
+    });
+    it('takes an array or object as the first argument, otherwise returns false', function () {
+      expect(_.contains([12, 2, 3], 5)).to.equal(false);
+    });
+    it('returns true if the value provided in the second argument is present in the array', function () {
+      var actual = _.contains([1, 2, 3, 4, 5], 4);
+      expect(actual).to.eql(true);
+    });
+    it('should work for objects', () => {
+      const actual = _.contains({a: 1, b:2}, 2)
+      expect(actual).to.equal(true);
+    });
+  });
 
 
 //   describe('#every', function () {

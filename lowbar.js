@@ -113,6 +113,29 @@ return newList
 
 }
 
+_.pluck = function (list, propName) {
+  const result = [];
+  for(var key in list) {
+    result.push(list[key][propName])
+  }
+  return result;
+}
+
+_.contains = function(list, val, fromIndex) {
+
+  if(!fromIndex) fromIndex = 0;
+  if(Array.isArray(list)){
+  for(var i = fromIndex; i < list.length; i++){
+    if(list[i] === val) return true;
+  }
+}else 
+  for(var key in list){
+    if(list[key] === val){
+      return true
+    }
+  }
+  return false
+}
 
 _.reduce = function (list, iteratee, memo, context) {
   if (!context) context = this;
@@ -138,6 +161,7 @@ _.reduce = function (list, iteratee, memo, context) {
   }
   return memo;
 }
+
 
 
 _.extend = function (destination, sources) {
