@@ -5,6 +5,12 @@ _.identity = function (value) {
   return value;
 }
 
+_.first = function(arr, n) {
+  if(n) {
+    return arr.slice(0, n);
+  }
+  return arr[0];
+}
 
 
 

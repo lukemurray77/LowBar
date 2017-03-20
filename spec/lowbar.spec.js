@@ -38,23 +38,23 @@ describe('_', function () {
 
 
 
-//   describe('#first', function () {
-//     it('is a function', function () {
-//       expect(_.first).to.be.a('function');
-//     });
+  describe('#first', function () {
+    it('is a function', function () {
+      expect(_.first).to.be.a('function');
+    });
 
-//     it('function returns the first element of a passed array', function () {
-//       var expected = 1;
-//       var actual = _.first([1, 2, 3]);
-//       expect(actual).to.equal(expected);
-//     });
+    it('function returns the first element of a passed array', function () {
+      var expected = 1;
+      var actual = _.first([1, 2, 3]);
+      expect(actual).to.equal(expected);
+    });
 
-//     it('function returns an array of the first n number of elements if n is passed', function () {
-//       var expected = [1, 2, 3];
-//       var actual = _.first([1, 2, 3, 4, 5], 3);
-//       expect(actual).to.eql(expected);
-//     });
-//   });
+    it('function returns an array of the first n number of elements if n is passed', function () {
+      var expected = [1, 2, 3];
+      var actual = _.first([1, 2, 3, 4, 5], 3);
+      expect(actual).to.eql(expected);
+    });
+  });
 
 
 
