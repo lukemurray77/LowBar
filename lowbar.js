@@ -17,6 +17,22 @@ _.last = function(arr, n) {
   return arr[arr.length -1];
 }
 
+_.each = function(arr, iteratee) {
+  if (Array.isArray(arr)) {
+    for(var i = 0; i < arr.length; i++) {
+      iteratee(arr[i]);
+    }
+    return arr;
+  } else {
+    for( var key in arr) {
+      iteratee(arr[key]);
+    }
+    return arr;
+  }
+  
+
+}
+
 
 
 

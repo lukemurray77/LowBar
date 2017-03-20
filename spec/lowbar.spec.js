@@ -38,79 +38,77 @@ describe('_', function () {
 
 
 
-  describe('#first', function () {
-    it('is a function', function () {
-      expect(_.first).to.be.a('function');
-    });
-
-    it('function returns the first element of a passed array', function () {
-      var expected = 1;
-      var actual = _.first([1, 2, 3]);
-      expect(actual).to.equal(expected);
-    });
-
-    it('function returns an array of the first n number of elements if n is passed', function () {
-      var expected = [1, 2, 3];
-      var actual = _.first([1, 2, 3, 4, 5], 3);
-      expect(actual).to.eql(expected);
-    });
+describe('#first', function () {
+  it('is a function', function () {
+    expect(_.first).to.be.a('function');
   });
 
-
-
-
-
-
-
-  describe('#last', function () {
-    it('is a function', function () {
-      expect(_.last).to.be.a('function');
-    });
-
-    it('function returns the last element of a passed array', function () {
-      var expected = 3;
-      var actual = _.last([1, 2, 3]);
-      expect(actual).to.equal(expected);
-    });
-
-    it('function returns an array of the last n number of elements if n is passed', function () {
-      var expected = [3, 4, 5];
-      var actual = _.last([1, 2, 3, 4, 5], 3);
-      expect(actual).to.eql(expected);
-    });
+  it('function returns the first element of a passed array', function () {
+    var expected = 1;
+    var actual = _.first([1, 2, 3]);
+    expect(actual).to.equal(expected);
   });
 
+  it('function returns an array of the first n number of elements if n is passed', function () {
+    var expected = [1, 2, 3];
+    var actual = _.first([1, 2, 3, 4, 5], 3);
+    expect(actual).to.eql(expected);
+  });
+});
 
 
-//   describe('#each', function () {
-//     it('is a function', function () {
-//       expect(_.each).to.be.a('function');
-//     });
-//     it('function should take at least 2 arguments', function () {
-//       expect(_.each.length).to.equal(2);
-//     });
-//     it('if an array is the first argument, pass the element, i, list into the iteratee', function () {
-//       function timesTwo(number, ind, list) { return number * 2 };
-//       var arr = [1, 2, 3]
-//       var actual = _.each(arr, timesTwo);
-//       expect(actual).to.equal(arr);
-//     });
-//     it('if an object is the first argument, ', function () {
-//       function timesTwo(number) { return number * 2 };
-//       var obj = { a: 1, b: 2, c: 3 };
-//       var actual = _.each(obj, timesTwo);
-//       expect(actual).to.equal(obj);
-//     });
-//     it('should test the function runs on each element of the array', function () {
-//       var spy = sinon.spy();
 
-//       _.each('hello', spy)
-//       expect(spy.callCount).to.equal(5);
-//       expect(spy.firstCall.args).to.eql(['h', '0', 'hello']);
-//       expect(spy.secondCall.args).to.eql(['e', '1', 'hello']);
-//     });
 
-//   });
+
+
+
+describe('#last', function () {
+  it('is a function', function () {
+    expect(_.last).to.be.a('function');
+  });
+
+  it('function returns the last element of a passed array', function () {
+    var expected = 3;
+    var actual = _.last([1, 2, 3]);
+    expect(actual).to.equal(expected);
+  });
+
+  it('function returns an array of the last n number of elements if n is passed', function () {
+    var expected = [3, 4, 5];
+    var actual = _.last([1, 2, 3, 4, 5], 3);
+    expect(actual).to.eql(expected);
+  });
+});
+
+
+
+describe('#each', function () {
+  it('is a function', function () {
+    expect(_.each).to.be.a('function');
+  });
+  it('function should take at least 2 arguments', function () {
+    expect(_.each.length).to.equal(2);
+  });
+  it('if an object is the first argument, ', function () {
+    function timesTwo(number) { return number * 2 };
+    var obj = { a: 1, b: 2, c: 3 };
+    var actual = _.each(obj, timesTwo);
+    expect(actual).to.equal(obj);
+  });
+  it('should test the function runs on each element of the array', function () {
+    var spy = sinon.spy();
+
+    _.each('hello', spy)
+    expect(spy.callCount).to.equal(5);
+  });
+  it('should work when using the values of each', () => {
+    const expected = [2, 4, 6];
+    const actual = [];
+    _.each([1, 2, 3], function (x) { actual.push(x * 2) })
+    expect(actual).to.eql(expected);
+  });
+
+});
 
 
 
