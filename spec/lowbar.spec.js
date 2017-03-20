@@ -115,49 +115,49 @@ describe('#each', function () {
 
 
 
-//   describe('#indexOf', function () {
-//     it('is a function', function () {
-//       expect(_.indexOf).to.be.a('function');
-//     });
-//     it('function should take at least 2 arguments', function () {
-//       expect(_.indexOf.length).to.equal(2);
-//     });
-//     it('function should return the index of the passed element in the passed array', function () {
-//       var arr = [1, 2, 3];
-//       var actual = _.indexOf(arr, 2);
-//       var expected = 1;
-//       expect(actual).to.equal(expected);
-//     });
-//     it('function should return -1 if the value is not present in the array', function () {
-//       var arr = [1, 2, 3];
-//       var actual = _.indexOf(arr, 6);
-//       var expected = -1;
-//       expect(actual).to.equal(expected);
-//     });
-//     it('function should return -1 if the first argument is not an array', function () {
-//       var arr = 12345;
-//       var actual = _.indexOf(arr, 3);
-//       var expected = -1;
-//       expect(actual).to.equal(expected);
-//     });
+  describe('#indexOf', function () {
+    it('is a function', function () {
+      expect(_.indexOf).to.be.a('function');
+    });
+    it('function should take at least 2 arguments', function () {
+      expect(_.indexOf.length).to.be.above(2);
+    });
+    it('function should return the index of the passed element in the passed array', function () {
+      var arr = [1, 2, 3];
+      var actual = _.indexOf(arr, 2);
+      var expected = 1;
+      expect(actual).to.equal(expected);
+    });
+    it('function should return -1 if the value is not present in the array', function () {
+      var arr = [1, 2, 3];
+      var actual = _.indexOf(arr, 6);
+      var expected = -1;
+      expect(actual).to.equal(expected);
+    });
+    it('function should return -1 if the first argument is not an array', function () {
+      var arr = 12345;
+      var actual = _.indexOf(arr, 3);
+      var expected = -1;
+      expect(actual).to.equal(expected);
+    });
 
-//   });
+  });
 
-//   describe('#filter', function () {
-//     it('is a function', function () {
-//       expect(_.filter).to.be.a('function');
-//     });
-//     it('function should take at least 2 arguments', function () {
-//       expect(_.filter.length).to.equal(2);
-//     });
-//     it('function should return a new array that pass the predicate argument', function () {
-//       var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-//       var func = function isEven(num) { return num % 2 === 0 }
-//       var actual = _.filter(arr, func);
-//       var expected = [2, 4, 6, 8, 10];
-//       expect(actual).to.eql(expected);
-//     });
-//   });
+  describe('#filter', function () {
+    it('is a function', function () {
+      expect(_.filter).to.be.a('function');
+    });
+    it('function should take at least 2 arguments', function () {
+      expect(_.filter.length).to.equal(2);
+    });
+    it('function should return a new array that pass the predicate argument', function () {
+      var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      var func = function isEven(num) { return num % 2 === 0 }
+      var actual = _.filter(arr, func);
+      var expected = [2, 4, 6, 8, 10];
+      expect(actual).to.eql(expected);
+    });
+  });
 
 //   describe('#reject', function () {
 //     it('is a function', function () {
