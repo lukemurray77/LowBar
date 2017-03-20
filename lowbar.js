@@ -65,15 +65,23 @@ function binarySearch(list, value) {
   return -1;
 }
 
-_.filter = function (list, predicate) {
+_.filter = function (list, predicate, context) {
+  if(!context) context = this;
   const newArr = [];
   for (let i = 0; i < list.length; i++) {
-    if (predicate(list[i])) newArr.push(list[i]);
+    if (predicate.call(context, list[i])) newArr.push(list[i]);
   }
   return newArr
 }
 
-
+_.reject = function (list, predicate, context) {
+  if(!context) context = this;
+  const newArr = [];
+  for (let i = 0; i < list.length; i++) {
+    if (!predicate.call(context, list[i])) newArr.push(list[i]);
+  }
+  return newArr
+}
 
 
 
