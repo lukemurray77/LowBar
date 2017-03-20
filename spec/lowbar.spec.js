@@ -319,7 +319,7 @@ describe('#each', function () {
   });
 
 
-  describe('#every', function () {
+  describe.only('#every', function () {
     it('is a function', function () {
       expect(_.every).to.be.a('function');
     });
@@ -378,6 +378,184 @@ describe('#each', function () {
      expect(actual).to.eql({ flavor: "chocolate", sprinkles: "lots" })
    });
  });
+ describe('#memoize', function () {
+    it('is a function', function () {
+        expect(_.memoize).to.be.a('function');
+    });
+    it('should return a function', function () {
+        const speedy = _.memoize(function () {});
+        expect(speedy).to.be.a('function');
+    });
+    it('should return a function that does the same thing as the function passed', function () {
+        function fib (n) {
+            if (n < 2) return 1;
+            return fib(n - 1) + fib(n - 2);
+        }
+        const speedyFib = _.memoize(fib);
+        const normalRes = fib(5);
+        const speedyRes = speedyFib(5);
+        expect(speedyRes).to.equal(normalRes);
+    });
+    it('should return a faster version of the function passed', function () {
+        function fib (n) {
+            if (n < 2) return 1;
+            return fib(n - 1) + fib(n - 2);
+        }
+        const speedyFib = _.memoize(fib);
+        speedyFib(37);
+        const beforeSlow = new Date().getTime();
+        fib(37);
+        const slowDiff = new Date().getTime() - beforeSlow;
+        const beforeFast = new Date().getTime();
+        speedyFib(37);
+        
+        const fastDiff = new Date().getTime() - beforeFast;
+        expect(slowDiff > fastDiff).to.equal(true);
+    });
+    
+});
+describe('#sortBy', () => {
+       it('is a function', () => {
+           expect(_.sortBy).to.be.a('function');
+       });
+       it('should sort objects by key', function () {
+           var stooges = [{ name: 'moe', age: 40 }, { name: 'larry', age: 50 }, { name: 'curly', age: 60 }];
+           var actual = _.sortBy(stooges, 'name');
+           var expected = [{ name: 'curly', age: 60 }, { name: 'larry', age: 50 }, { name: 'moe', age: 40 }];
+           expect(actual).to.eql(expected);
+       });
+       it('should work for arrays', () => {
+           var actual = _.sortBy([1, 3, 2, 4, 5, 6], function (num) { return Math.sin(num); });
+           var expected = [5, 4, 6, 3, 1, 2];
+           expect(actual).to.eql(expected);
+       });
+   });
+   describe('#zip', () => {
+       it('should be a function', () => {
+           expect(_.zip).to.be.a('function');
+       });
+       it('should merge arrays together based on index position', () => {
+           const actual = _.zip(['moe', 'larry', 'curly'], [30, 40, 50], [true, false, false]);
+           const expected = [["moe", 30, true], ["larry", 40, false], ["curly", 50, false]];
+           expect(actual).to.eql(expected);
+       });
+   });
+   describe('#sortedIndex', () => {
+       it('should be a function', () => {
+           expect(_.sortedIndex).to.be.a('function');
+       });
+       it('should return the insetion index', () => {
+           var actual = _.sortedIndex([10, 20, 30, 40, 50], 55);
+           var expected = 5;
+           expect(actual).to.eql(expected);
+
+       });
+       it('should return the insetion index', () => {
+           var stooges = [{ name: 'moe', age: 40 }, { name: 'curly', age: 60 }];
+           var actual = _.sortedIndex(stooges, { name: 'larry', age: 50 }, 'age');
+           var expected = 1;
+           expect(actual).to.eql(expected);
+       });
+       it('should work when passed iteratee', () => {
+           var test = function (num) { return Math.sin(num); };
+           var expected = 0;
+           var actual = _.sortedIndex([1, 3, 2, 4, 5, 6], 5, test);
+           expect(actual).to.eql(expected);
+       });
+   });
+   describe('#flatten', () => {
+       it('should be a function', () => {
+           expect(_.flatten).to.be.a('function');
+       });
+       it('should be a function', () => {
+           const actual = _.flatten([1, [2], [3, [[4]]]]);
+           const expected = [1, 2, 3, 4];
+           expect(actual).to.eql(expected);
+       });
+       it('should be a function', () => {
+           const actual = _.flatten([1, [2], [3, [[4]]]], true);
+           const expected = [1, 2, 3, [[4]]];
+           expect(actual).to.eql(expected);
+       });
+   });
+/*
+
+describe('#once', function () {
+    it('is a function', function () {
+        expect(_.once).to.be.a('function');
+    });
+    it('should create a version of a function that only gets called one time', function () {
+        
+        var spy = sinon.spy();
+        var tester = _.once(spy);
+        tester();
 
 
+        expect(spy.calledOnce).to.equal(true);
+    });
+});
+describe('#memoize', function () {
+    it('is a function', function () {
+        expect(_.memoize).to.be.a('function');
+    });
+    it('should return a function', function () {
+        const speedy = _.memoize(function () {});
+        expect(speedy).to.be.a('function');
+    });
+    it('should return a function that does the same thing as the function passed', function () {
+        function fib (n) {
+            if (n < 2) return 1;
+            return fib(n - 1) + fib(n - 2);
+        }
+        const speedyFib = _.memoize(fib);
+        const normalRes = fib(5);
+        const speedyRes = speedyFib(5);
+        expect(speedyRes).to.equal(normalRes);
+    });
+    it('should return a faster version of the function passed', function () {
+        function fib (n) {
+            if (n < 2) return 1;
+            return fib(n - 1) + fib(n - 2);
+        }
+        const speedyFib = _.memoize(fib);
+        speedyFib(37);
+        const beforeSlow = new Date().getTime();
+        fib(37);
+        const slowDiff = new Date().getTime() - beforeSlow;
+        const beforeFast = new Date().getTime();
+        speedyFib(37);
+        
+        const fastDiff = new Date().getTime() - beforeFast;
+        expect(slowDiff > fastDiff).to.equal(true);
+    });
+    
+});
 
+describe('#shuffle', function () {
+    it('is a function', function () {
+        expect(_.shuffle).to.be.a('function');
+    });
+    it('should return an array', function () {
+        expect(_.shuffle([])).to.be.a('array');
+    });
+    it('should return an array the same length as the input array', function () {
+        expect(_.shuffle([1,2,3,4,5].length)).to.equal(5);
+    }); 
+});
+
+describe('#delay', function () {
+    it('is a function', function () {
+        expect(_.delay).to.be.a('function');
+    });
+    it('calls a function after a specified amount of time', function (done) {
+        const delaySpy = sinon.spy();
+        _.delay(delaySpy, 500, 5, 6);
+        setTimeout(function () {
+            expect(delaySpy.calledOnce).to.equal(true);
+            expect(delaySpy.calledWithExactly(5, 6)).to.equal(true)
+            done();
+        }, 800);
+
+    });
+});
+ */
