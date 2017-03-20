@@ -62,23 +62,23 @@ describe('_', function () {
 
 
 
-//   describe('#last', function () {
-//     it('is a function', function () {
-//       expect(_.last).to.be.a('function');
-//     });
+  describe('#last', function () {
+    it('is a function', function () {
+      expect(_.last).to.be.a('function');
+    });
 
-//     it('function returns the last element of a passed array', function () {
-//       var expected = 3;
-//       var actual = _.last([1, 2, 3]);
-//       expect(actual).to.equal(expected);
-//     });
+    it('function returns the last element of a passed array', function () {
+      var expected = 3;
+      var actual = _.last([1, 2, 3]);
+      expect(actual).to.equal(expected);
+    });
 
-//     it('function returns an array of the last n number of elements if n is passed', function () {
-//       var expected = [3, 4, 5];
-//       var actual = _.last([1, 2, 3, 4, 5], 3);
-//       expect(actual).to.eql(expected);
-//     });
-//   });
+    it('function returns an array of the last n number of elements if n is passed', function () {
+      var expected = [3, 4, 5];
+      var actual = _.last([1, 2, 3, 4, 5], 3);
+      expect(actual).to.eql(expected);
+    });
+  });
 
 
 

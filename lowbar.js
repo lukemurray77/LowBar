@@ -12,6 +12,10 @@ _.first = function(arr, n) {
   return arr[0];
 }
 
+_.last = function(arr, n) {
+  if(n) return arr.slice(-n);
+  return arr[arr.length -1];
+}
 
 
 
