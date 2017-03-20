@@ -319,7 +319,7 @@ describe('#each', function () {
   });
 
 
-  describe.only('#every', function () {
+  describe('#every', function () {
     it('is a function', function () {
       expect(_.every).to.be.a('function');
     });
@@ -463,16 +463,16 @@ describe('#sortBy', () => {
            expect(actual).to.eql(expected);
        });
    });
-   describe('#flatten', () => {
+   describe.only('#flatten', () => {
        it('should be a function', () => {
            expect(_.flatten).to.be.a('function');
        });
-       it('should be a function', () => {
+       it('should work without boolean', () => {
            const actual = _.flatten([1, [2], [3, [[4]]]]);
            const expected = [1, 2, 3, 4];
            expect(actual).to.eql(expected);
        });
-       it('should be a function', () => {
+       it('should work with boolean', () => {
            const actual = _.flatten([1, [2], [3, [[4]]]], true);
            const expected = [1, 2, 3, [[4]]];
            expect(actual).to.eql(expected);
