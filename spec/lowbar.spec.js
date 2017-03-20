@@ -221,7 +221,7 @@ describe('#each', function () {
 
   });
 
-  describe.only('#pluck', function () {
+  describe('#pluck', function () {
     it('is a function', function () {
       expect(_.pluck).to.be.a('function');
     });
@@ -319,55 +319,65 @@ describe('#each', function () {
   });
 
 
-//   describe('#every', function () {
-//     it('is a function', function () {
-//       expect(_.every).to.be.a('function');
-//     });
-//     it('takes 1 or more arguments', function () {
-//       expect(_.every.length).to.be.above(0);
-//     });
-//     it('should return true if all the values in the list pass the truth test provided in the second argument', function () {
-//       function isEven(num) { return num % 2 === 0; };
-//       var expected = false;
-//       var actual = _.every([2, 4, 5], isEven);
-//       expect(actual).to.equal(expected);
-//       function wordLength(word) { return word.length > 5 };
-//       var wordsArr = ['helloworld', 'northcoders', 'iamacoder'];
-//       var actual = _.every(wordsArr, wordLength);
-//       expect(actual).to.equal(true);
-//     });
-//     it('should work for objects', () => {
-//       function isEven(num) { return num % 2 === 0; };
-//       var actual = _.every({a: 2, b: 4, c: 10}, isEven);
-//       expect(actual).to.equal(true);
-//       function wordLength(word) { return word.length > 5 };
-//       var wordsArr = {a:'helloworld', b:'northcoders', c:'notaclue'};
-//       var actual = _.every(wordsArr, wordLength);
-//       expect(actual).to.equal(true);
+  describe('#every', function () {
+    it('is a function', function () {
+      expect(_.every).to.be.a('function');
+    });
+    it('takes 1 or more arguments', function () {
+      expect(_.every.length).to.be.above(0);
+    });
+    it('should return true if all the values in the list pass the truth test provided in the second argument', function () {
+      function isEven(num) { return num % 2 === 0; };
+      var expected = false;
+      var actual = _.every([2, 4, 5], isEven);
+      expect(actual).to.equal(expected);
+      function wordLength(word) { return word.length > 5 };
+      var wordsArr = ['helloworld', 'northcoders', 'iamacoder'];
+      var actual = _.every(wordsArr, wordLength);
+      expect(actual).to.equal(true);
+    });
+    it('should work for objects', () => {
+      function isEven(num) { return num % 2 === 0; };
+      var actual = _.every({a: 2, b: 4, c: 10}, isEven);
+      expect(actual).to.equal(true);
+      function wordLength(word) { return word.length > 5 };
+      var wordsArr = {a:'helloworld', b:'northcoders', c:'notaclue'};
+      var actual = _.every(wordsArr, wordLength);
+      expect(actual).to.equal(true);
 
-//     });
+    });
 
-//   });
-//   describe('#some', () => {
-//     it('is a function', () => {
-//       expect(_.some).to.be.a('function');
-//     });
-//     it('should return true if no 2nd argument is given', () => {
-//       expect(_.some([1,2,3,4])).to.equal(true);
-//     });
-//     it('should take a list as an argument, and return true if just one element of the list passes the truth test', () => {
-//       const shouldBeTrue = _.some([5,10,20,50,100], function(x){return x > 50});
-//       const shouldBeFalse = _.some([5,10,20,50,35], function(x){return x > 50});
-//       expect(shouldBeTrue).to.equal(true);
-//       expect(shouldBeTrue).to.equal(false);
-//     });
-//     it('should work for objects', () => {
-//       const shouldBeTrue = _.some({a: 10, b: 20, c: 45, d: 500}, function(x){return x > 50});
-//       const shouldBeFalse = _.some({a: 10, b: 20, c: 45, d: 50}, function(x){return x > 50});
-//       expect(shouldBeTrue).to.equal(true);
-//       expect(shouldBeTrue).to.equal(false);
-//     });
-//   });
+  });
+  describe('#some', () => {
+    it('is a function', () => {
+      expect(_.some).to.be.a('function');
+    });
+    it('should return true if no 2nd argument is given', () => {
+      expect(_.some([1,2,3,4])).to.equal(true);
+    });
+    it('should take a list as an argument, and return true if just one element of the list passes the truth test', () => {
+      const shouldBeTrue = _.some([5,10,20,50,100], function(x){return x > 50});
+      const shouldBeFalse = _.some([5,10,20,50,35], function(x){return x > 50});
+      expect(shouldBeTrue).to.equal(true);
+      expect(shouldBeFalse).to.equal(false);
+    });
+    it('should work for objects', () => {
+      const shouldBeTrue = _.some({a: 10, b: 20, c: 45, d: 500}, function(x){return x > 50});
+      const shouldBeFalse = _.some({a: 10, b: 20, c: 45, d: 50}, function(x){return x > 50});
+      expect(shouldBeTrue).to.equal(true);
+      expect(shouldBeFalse).to.equal(false);
+    });
+  });
+  describe('#defaults', function () {
+   it('should be a function', function () {
+     expect(_.defaults).to.be.a("function");
+   });
+   it('should set defaults', () => {
+     var iceCream = { flavor: "chocolate" };
+     const actual = _.defaults(iceCream, { flavor: "vanilla", sprinkles: "lots" });
+     expect(actual).to.eql({ flavor: "chocolate", sprinkles: "lots" })
+   });
+ });
 
 
-// });
+
