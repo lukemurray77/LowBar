@@ -259,7 +259,6 @@ _.once = function (func) {
 
 _.flatten = function (list, bool) {
   const res = [];
-  console.log(bool)
   if (bool) {
     list.forEach(function (el) {
       if (!Array.isArray(el)) {
