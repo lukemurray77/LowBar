@@ -289,7 +289,16 @@ _.flatten = function (list, bool) {
 }
 
 
+_.shuffle = function (list) {
+  const shuffled = [];
+  while (list.length > 0) {
+    let randomNo = getRandomInt(0, list.length);
+    shuffled.push(list[randomNo]);
+    list = list.slice(0, randomNo).concat(list.slice(randomNo+1))
+  }
+  return shuffled;
 
+}
 
 
 
@@ -318,7 +327,13 @@ if (typeof module !== 'undefined') {
   module.exports = _;
 }
 
+function getRandomInt (min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
 
+}
+console.log(_.shuffle([1,2,3,4,5,6,7,8,9]))
 /**
  * var _ = {};
 

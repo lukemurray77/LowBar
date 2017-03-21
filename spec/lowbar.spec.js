@@ -463,7 +463,7 @@ describe('#sortBy', () => {
            expect(actual).to.eql(expected);
        });
    });
-   describe.only('#flatten', () => {
+   describe('#flatten', () => {
        it('should be a function', () => {
            expect(_.flatten).to.be.a('function');
        });
@@ -478,9 +478,7 @@ describe('#sortBy', () => {
            expect(actual).to.eql(expected);
        });
    });
-/*
-
-describe('#once', function () {
+   describe('#once', function () {
     it('is a function', function () {
         expect(_.once).to.be.a('function');
     });
@@ -494,54 +492,23 @@ describe('#once', function () {
         expect(spy.calledOnce).to.equal(true);
     });
 });
-describe('#memoize', function () {
-    it('is a function', function () {
-        expect(_.memoize).to.be.a('function');
-    });
-    it('should return a function', function () {
-        const speedy = _.memoize(function () {});
-        expect(speedy).to.be.a('function');
-    });
-    it('should return a function that does the same thing as the function passed', function () {
-        function fib (n) {
-            if (n < 2) return 1;
-            return fib(n - 1) + fib(n - 2);
-        }
-        const speedyFib = _.memoize(fib);
-        const normalRes = fib(5);
-        const speedyRes = speedyFib(5);
-        expect(speedyRes).to.equal(normalRes);
-    });
-    it('should return a faster version of the function passed', function () {
-        function fib (n) {
-            if (n < 2) return 1;
-            return fib(n - 1) + fib(n - 2);
-        }
-        const speedyFib = _.memoize(fib);
-        speedyFib(37);
-        const beforeSlow = new Date().getTime();
-        fib(37);
-        const slowDiff = new Date().getTime() - beforeSlow;
-        const beforeFast = new Date().getTime();
-        speedyFib(37);
-        
-        const fastDiff = new Date().getTime() - beforeFast;
-        expect(slowDiff > fastDiff).to.equal(true);
-    });
-    
-});
 
 describe('#shuffle', function () {
     it('is a function', function () {
         expect(_.shuffle).to.be.a('function');
     });
     it('should return an array', function () {
-        expect(_.shuffle([])).to.be.a('array');
+        expect(_.shuffle([])).to.be.an('array');
     });
     it('should return an array the same length as the input array', function () {
-        expect(_.shuffle([1,2,3,4,5].length)).to.equal(5);
+      const actual = _.shuffle([1,2,3,4,5,6,7,8]);
+      expect(actual.length).to.equal(8);
     }); 
 });
+   
+/*
+
+
 
 describe('#delay', function () {
     it('is a function', function () {
