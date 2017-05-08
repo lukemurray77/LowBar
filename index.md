@@ -26,7 +26,7 @@ _.identity = function () {
 // example 
 var stooge = {name: 'moe'};
 stooge === _.identity(stooge);
-// => true
+=> true
 
 ```
 
@@ -43,7 +43,7 @@ _.first = function (arr, n) {
 // example 
 
 _.first([5, 4, 3, 2, 1]);
-// => 5
+=> 5
 ```
 
 <span id="last"></span>
@@ -57,7 +57,7 @@ _.last = function (arr, n) {
 //example 
 
 _.last([5, 4, 3, 2, 1]);
-// => 1
+=> 1
 ```
 
 <span id="each"></span>
@@ -78,9 +78,9 @@ _.each = function (arr, iteratee) {
 }
 // example
 _.each([1, 2, 3], alert);
-// => alerts each number in turn...
+=> alerts each number in turn...
 _.each({one: 1, two: 2, three: 3}, alert);
-// => alerts each number value in turn...
+=> alerts each number value in turn...
 
 ```
 
@@ -100,7 +100,7 @@ _.indexOf = function (arr, value, isSorted) {
 
 //example 
 _.indexOf([1, 2, 3], 2);
-//=> 1
+=> 1
 ```
 
 <span id="filter"></span>
@@ -117,7 +117,7 @@ _.filter = function (list, predicate, context) {
 
 // example 
 var evens = _.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
-//=> [2, 4, 6]
+=> [2, 4, 6]
 ```
 
 <span id="reject"></span>
@@ -134,7 +134,7 @@ _.reject = function (list, predicate, context) {
 
 // example 
 var odds = _.reject([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
-//=> [1, 3, 5]
+=> [1, 3, 5]
 ```
 
 <span id="uniq"></span>
@@ -156,7 +156,7 @@ _.uniq = function (array, isSorted, iteratee) {
 
 // example 
 _.uniq([1, 2, 1, 4, 1, 3]);
-//=> [1, 2, 4, 3]
+=> [1, 2, 4, 3]
 ```
 
 <span id="map"></span>
@@ -174,9 +174,9 @@ _.map = function (list, iteratee, context) {
 
 // example
 _.map([1, 2, 3], function(num){ return num * 3; });
-//=> [3, 6, 9]
+=> [3, 6, 9]
 _.map({one: 1, two: 2, three: 3}, function(num, key){ return num * 3; });
-//=> [3, 6, 9]
+=> [3, 6, 9]
 
 ```
 
@@ -194,7 +194,7 @@ _.pluck = function (list, propName) {
 // example 
 var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
 _.pluck(stooges, 'name');
-//=> ["moe", "larry", "curly"]
+=> ["moe", "larry", "curly"]
 ```
 
 <span id="reduce"></span>
@@ -227,7 +227,7 @@ _.reduce = function (list, iteratee, memo, context) {
 
 // example 
 var sum = _.reduce([1, 2, 3], function(memo, num){ return memo + num; }, 0);
-//=> 6
+=> 6
 
 ```
 
@@ -252,7 +252,7 @@ _.contains = function (list, val, fromIndex) {
 
 // example
 _.contains([1, 2, 3], 3);
-//=> true
+=> true
 ```
 
 <span id="every"></span>
@@ -271,7 +271,7 @@ _.every = function (list, predicate, context) {
 
 // example
 _.every([2, 4, 5], function(num) { return num % 2 == 0; });
-//=> false
+=> false
 ```
 
 <span id="some"></span>
@@ -292,7 +292,7 @@ _.some = function (list, predicate, context) {
 
 // example
 _.some([null, 0, 'yes', false]);
-//=> true
+=> true
 ```
 
 <span id="extend"></span>
@@ -310,7 +310,7 @@ _.extend = function (destination, sources) {
 // example
 
 _.extend({name: 'moe'}, {age: 50});
-// => {name: 'moe', age: 50}
+=> {name: 'moe', age: 50}
 ```
 
 <span id="defaults"></span>
@@ -328,7 +328,7 @@ _.defaults = function (object, defaults) {
 // example
 var iceCream = {flavor: "chocolate"};
 _.defaults(iceCream, {flavor: "vanilla", sprinkles: "lots"});
-//=> {flavor: "chocolate", sprinkles: "lots"}
+=> {flavor: "chocolate", sprinkles: "lots"}
 ```
 
 <span id="once"></span>
@@ -390,7 +390,7 @@ _.delay = function(iteratee, wait) {
 
 var log = _.bind(console.log, console);
 _.delay(log, 1000, 'logged later');
-//=> 'logged later' // Appears after one second.
+=> 'logged later' // Appears after one second.
 ```
 
 <span id="shuffle"></span>
@@ -408,7 +408,7 @@ _.shuffle = function (list) {
 
 // example 
 _.shuffle([1, 2, 3, 4, 5, 6]);
-//=> [4, 1, 6, 3, 5, 2]
+=> [4, 1, 6, 3, 5, 2]
 ```
 
 <span id="invoke"></span>
@@ -425,7 +425,7 @@ _.invoke = function (list, methodName, ...args) {
 // example
 
 _.invoke([[5, 1, 7], [3, 2, 1]], 'sort');
-// => [[1, 5, 7], [1, 2, 3]]
+=> [[1, 5, 7], [1, 2, 3]]
 ```
 
 <span id="sortby"></span>
@@ -457,11 +457,11 @@ _.sortBy = function (list, iteratee) {
 
 // example 
 _.sortBy([1, 2, 3, 4, 5, 6], function(num){ return Math.sin(num); });
-//=> [5, 4, 6, 3, 1, 2]
+=> [5, 4, 6, 3, 1, 2]
 
 var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
 _.sortBy(stooges, 'name');
-// => [{name: 'curly', age: 60}, {name: 'larry', age: 50}, {name: 'moe', age: 40}];
+=> [{name: 'curly', age: 60}, {name: 'larry', age: 50}, {name: 'moe', age: 40}];
 
 ```
 
@@ -483,7 +483,7 @@ _.zip = function () {
 // example 
 
 _.zip(['moe', 'larry', 'curly'], [30, 40, 50], [true, false, false]);
-//=> [["moe", 30, true], ["larry", 40, false], ["curly", 50, false]]
+=> [["moe", 30, true], ["larry", 40, false], ["curly", 50, false]]
 ```
 
 <span id="sortedindex"></span>
@@ -499,11 +499,11 @@ _.sortedIndex = function (list, value, iteratee) {
 // example
 
 _.sortedIndex([10, 20, 30, 40, 50], 35);
-//=> 3
+=> 3
 
 var stooges = [{name: 'moe', age: 40}, {name: 'curly', age: 60}];
 _.sortedIndex(stooges, {name: 'larry', age: 50}, 'age');
-//=> 1
+=> 1
 ```
 
 <span id="flatten"></span>
@@ -542,10 +542,10 @@ _.flatten = function (list, bool) {
 // example 
 
 _.flatten([1, [2], [3, [[4]]]]);
-//=> [1, 2, 3, 4];
+=> [1, 2, 3, 4];
 
 _.flatten([1, [2], [3, [[4]]]], true);
-//=> [1, 2, 3, [[4]]];
+=> [1, 2, 3, [[4]]];
 ```
 
 <span id="intersection"></span>
@@ -571,7 +571,7 @@ _.intersection = function(arrays) {
 // example 
 
 _.intersection([1, 2, 3], [101, 2, 1, 10], [2, 1]);
-//=> [1, 2]
+=> [1, 2]
 ```
 
 <span id="difference"></span>
@@ -595,7 +595,7 @@ _.difference = function(array, others) {
 // example 
 
 _.difference([1, 2, 3, 4, 5], [5, 2, 10]);
-//=> [1, 3, 4]
+=> [1, 3, 4]
 ```
 
 <span id="helpers"></span>
