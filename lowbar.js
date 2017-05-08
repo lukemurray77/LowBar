@@ -289,10 +289,13 @@ _.flatten = function (list, bool) {
 
 }
 
-_.delay = function (func, wait, args) {
-
+_.delay = function(iteratee, wait) {
+  const args = Array.from(arguments).slice(2);
   
-}
+  setTimeout(() => {
+    iteratee.apply(null, args);
+  }, wait);
+};
 
 
 _.shuffle = function (list) {
@@ -348,10 +351,9 @@ _.difference = function(array, others) {
 }
 
 
-_.throttle = function () {
+// _.throttle = function () {
   
-}
-
+// }
 
 function binarySearch(list, name) {
   var s = 0;
@@ -371,11 +373,6 @@ function binarySearch(list, name) {
   return m + 1;
 }
 
-
-if (typeof module !== 'undefined') {
-  module.exports = _;
-}
-
 function getRandomInt (min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -383,84 +380,7 @@ function getRandomInt (min, max) {
 
 }
 
-/**
- * var _ = {};
-
-
-_.once = function (func) {
-    var ran = false, memo;
-    return function () {
-        if (ran) return memo;
-            ran = true;
-            memo = func.apply(this, arguments);
-            func = null;
-            return memo;
-
-        };
-        
-    };
-
-_.memoize = function (func) {
-    const cache = {};
-    const speedy = function () {
-        // grab the first argument
-        const arg = JSON.stringify(arguments[0]);
-        // has it been called with this argument before?
-            // if so, lookin the cache and return the value for this argument
-            if (cache[arg]) return cache[arg];
-            else {
-
-            // if not call the function
-            const res = func.apply(null, arguments);
-            // save the value to cache
-            cache[arg] = res;
-            // return value
-            return res;
-    
-
-        }
-    };
-        speedy.cache = cache;
-
-        return speedy;
-    
-  };
-        
-_.delay = function (func, elapse) {
-     // set a delay
-     /// grab extra args
-     const args = Array.from(arguments).slice(2);
-     setTimeout(function() {
-        // call the function
-        func.apply(null, arguments);
-     }, elapse)
-}
-
-_.shuffle = function (list) {
-var arr = [];
-for (var i = 0; i < list.length; i++) {
-        var randomNo = getRandomInt(0, list.length);
-        var temp = list[randomNo];
-        arr.push(temp);
-        list = list.slice(0, randomNo).concat(list.slice(randomNo + 1));
-    }
-    
-    
-    return arr;
-
-};
-function getRandomInt (min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
-
-}
-
-console.log(_.shuffle([1,2,3,4,5]));
-
-
 if (typeof module !== 'undefined') {
   module.exports = _;
 }
 
- */

@@ -538,30 +538,30 @@ describe('#difference', () => {
   });
 });
 
-describe('#throttle', function () {
-  it('is a function', function () {
-    expect(_.throttle).to.be.a('function');
-  });
-  it('should call the function once per wait', function () {
-    var spy = sinon.spy(function () { });
-    var clock = sinon.useFakeTimers();
-    var test = _.throttle(spy, 1000);
-    expect(spy.callCount).to.equal(1);
-    test();
-    expect(spy.callCount).to.equal(1);
-    test();
-    expect(spy.callCount).to.equal(1);
-    test();
-    expect(spy.callCount).to.equal(1);
-    clock.tick(1000);
-    expect(spy.callCount).to.equal(2);
-    expect(spy.callCount).to.equal(2);
-    clock.tick(1000);
-    expect(spy.callCount).to.equal(3);
-  });
-});
+// describe('#throttle', function () {
+//   it('is a function', function () {
+//     expect(_.throttle).to.be.a('function');
+//   });
+//   it('should call the function once per wait', function () {
+//     var spy = sinon.spy(function () { });
+//     var clock = sinon.useFakeTimers();
+//     var test = _.throttle(spy, 1000);
+//     expect(spy.callCount).to.equal(1);
+//     test();
+//     expect(spy.callCount).to.equal(1);
+//     test();
+//     expect(spy.callCount).to.equal(1);
+//     test();
+//     expect(spy.callCount).to.equal(1);
+//     clock.tick(1000);
+//     expect(spy.callCount).to.equal(2);
+//     expect(spy.callCount).to.equal(2);
+//     clock.tick(1000);
+//     expect(spy.callCount).to.equal(3);
+//   });
+// });
 
-describe.only('#delay', function () {
+describe('#delay', function () {
   it('is a function', function () {
     expect(_.delay).to.be.a('function');
   });
@@ -584,23 +584,6 @@ describe.only('#delay', function () {
     expect(spy.args[0]).to.eql([5, 3, 4]);
   });
 });
-/*
 
 
 
-describe('#delay', function () {
-    it('is a function', function () {
-        expect(_.delay).to.be.a('function');
-    });
-    it('calls a function after a specified amount of time', function (done) {
-        const delaySpy = sinon.spy();
-        _.delay(delaySpy, 500, 5, 6);
-        setTimeout(function () {
-            expect(delaySpy.calledOnce).to.equal(true);
-            expect(delaySpy.calledWithExactly(5, 6)).to.equal(true)
-            done();
-        }, 800);
-
-    });
-});
- */
