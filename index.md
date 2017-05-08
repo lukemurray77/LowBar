@@ -1,8 +1,10 @@
-# LowBar.js
+# Reimplementation of underscore.js
 
 This project is my attempt at reimplementing some key methods of the underscore.js library. 
 
-If you want to see the tests in action or check out the code just follow these steps:
+Underscore is a JavaScript library that provides a whole mess of useful functional programming helpers without extending any built-in objects. See the website <a href="http://underscorejs.org">here</a>.
+
+If you want to see the tests in action or check out the code in more detail just follow these steps:
 ```s
 git clone https://github.com/lukemurray77/LowBar.git LowBar
 
