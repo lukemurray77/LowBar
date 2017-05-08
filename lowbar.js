@@ -244,6 +244,7 @@ _.sortedIndex = function (list, value, iteratee) {
   } else
     return binarySearch(list, value);
 }
+
 _.once = function (func) {
   var ran = false, memo;
   return function () {
@@ -288,6 +289,11 @@ _.flatten = function (list, bool) {
 
 }
 
+_.delay = function (func, wait, args) {
+
+  
+}
+
 
 _.shuffle = function (list) {
   const shuffled = [];
@@ -299,9 +305,52 @@ _.shuffle = function (list) {
   return shuffled;
 
 }
+// refactor 
+_.invoke = function (list, methodName, ...args) {
+  let copy = list.slice();
+  const func = _[methodName];
+  for(var key in copy) {
+    copy[key] = func.apply(this, [copy[key], ...args]);
+  }
+  return copy
+}
+
+_.intersection = function(arrays) {
+  const args = [...arguments];
+  const res = [];
+  for(var i = 0; i < args[0].length; i++){
+    const val = args[0][i];
+  if(
+  _.every(args, function(array) {
+    return _.contains(array, val)
+  })
+
+  ) {
+    res.push(val);
+  }
+  }
+  return res;
+}
+
+_.difference = function(array, others) {
+  const args = [...arguments].slice(1);
+  const res = [];
+  for(var i = 0; i < array.length; i++) {
+    const val = array[i];
+    if(
+      _.every(args, function(array) {
+        return !_.contains(array, val);
+      })
+    )
+    res.push(val);
+  }
+  return res;
+}
 
 
-
+_.throttle = function () {
+  
+}
 
 
 function binarySearch(list, name) {
@@ -333,7 +382,7 @@ function getRandomInt (min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 
 }
-console.log(_.shuffle([1,2,3,4,5,6,7,8,9]))
+
 /**
  * var _ = {};
 
