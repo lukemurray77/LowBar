@@ -6,6 +6,7 @@ _.identity = function (value) {
 }
 
 _.first = function (arr, n) {
+  
   if (n) {
     return arr.slice(0, n);
   }
@@ -140,7 +141,6 @@ _.reduce = function (list, iteratee, memo, context) {
   }
   return memo;
 }
-
 
 
 _.extend = function (destination, sources) {
@@ -308,7 +308,7 @@ _.shuffle = function (list) {
   return shuffled;
 
 }
-// refactor 
+
 _.invoke = function (list, methodName, ...args) {
   let copy = list.slice();
   const func = _[methodName];
