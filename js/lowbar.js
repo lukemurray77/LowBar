@@ -3,7 +3,7 @@ const _ = {};
 
 _.identity = function (value) {
   return value;
-}
+};
 
 _.first = function (arr, n) {
   
@@ -11,12 +11,12 @@ _.first = function (arr, n) {
     return arr.slice(0, n);
   }
   return arr[0];
-}
+};
 
 _.last = function (arr, n) {
   if (n) return arr.slice(-n);
   return arr[arr.length - 1];
-}
+};
 
 _.each = function (arr, iteratee) {
   if (Array.isArray(arr)) {
@@ -32,7 +32,7 @@ _.each = function (arr, iteratee) {
   }
 
 
-}
+};
 
 
 _.indexOf = function (arr, value, isSorted) {
@@ -43,7 +43,7 @@ _.indexOf = function (arr, value, isSorted) {
     if (arr[i] === value) return i;
   }
   return -1;
-}
+};
 
 _.filter = function (list, predicate, context) {
   if (!context) context = this;
@@ -51,8 +51,8 @@ _.filter = function (list, predicate, context) {
   for (let i = 0; i < list.length; i++) {
     if (predicate.call(context, list[i])) newArr.push(list[i]);
   }
-  return newArr
-}
+  return newArr;
+};
 
 _.reject = function (list, predicate, context) {
   if (!context) context = this;
@@ -60,9 +60,8 @@ _.reject = function (list, predicate, context) {
   for (let i = 0; i < list.length; i++) {
     if (!predicate.call(context, list[i])) newArr.push(list[i]);
   }
-  return newArr
-}
-
+  return newArr;
+};
 
 
 _.uniq = function (array, isSorted, iteratee) {
@@ -77,29 +76,28 @@ _.uniq = function (array, isSorted, iteratee) {
       }
   }
   return newArr;
-}
+};
 
 _.map = function (list, iteratee, context) {
-  const newList = []
+  const newList = [];
   let i = 0;
   _.each(list, function (x) {
     newList.push(iteratee.apply(context, [x, i, list]));
-    i++
-  })
+    i++;
+  });
 
 
+  return newList;
 
-  return newList
-
-}
+};
 
 _.pluck = function (list, propName) {
   const result = [];
   for (var key in list) {
-    result.push(list[key][propName])
+    result.push(list[key][propName]);
   }
   return result;
-}
+};
 
 _.contains = function (list, val, fromIndex) {
 
@@ -111,11 +109,11 @@ _.contains = function (list, val, fromIndex) {
   } else
     for (var key in list) {
       if (list[key] === val) {
-        return true
+        return true;
       }
     }
-  return false
-}
+  return false;
+};
 
 _.reduce = function (list, iteratee, memo, context) {
   if (!context) context = this;
@@ -123,7 +121,7 @@ _.reduce = function (list, iteratee, memo, context) {
     for (let i = 0; i < list.length; i++) {
       if (memo === undefined) {
         memo = list[i];
-        i++
+        i++;
         memo = iteratee.apply(context, [memo, list[i], i, list]);
       } else
         memo = iteratee.apply(context, [memo, list[i], i, list]);
@@ -133,14 +131,14 @@ _.reduce = function (list, iteratee, memo, context) {
     for (var i = 0; i < keys.length; i++) {
       if (memo === undefined) {
         memo = list[keys[i]];
-        i++
+        i++;
         memo = iteratee.apply(context, [memo, list[keys[i]], i, list]);
       } else
         memo = iteratee.apply(context, [memo, list[keys[i]], i, list]);
     }
   }
   return memo;
-}
+};
 
 
 _.extend = function (destination, sources) {
@@ -152,16 +150,16 @@ _.extend = function (destination, sources) {
   }
   return destination;
 
-}
+};
 
 _.defaults = function (object, defaults) {
   for (var key in defaults) {
     if (!object[key]) {
-      object[key] = defaults[key]
+      object[key] = defaults[key];
     }
   }
   return object;
-}
+};
 
 
 _.every = function (list, predicate, context) {
@@ -173,7 +171,7 @@ _.every = function (list, predicate, context) {
     }
   }
   return every;
-}
+};
 
 _.some = function (list, predicate, context) {
   if (!context) context = this;
@@ -186,7 +184,7 @@ _.some = function (list, predicate, context) {
     }
   }
   return false;
-}
+};
 
 _.memoize = function (func) {
   const cache = {};
@@ -199,8 +197,8 @@ _.memoize = function (func) {
       cache[arg] = ans;
       return cache[arg];
     }
-  }
-}
+  };
+};
 
 _.sortBy = function (list, iteratee) {
   if (typeof iteratee === 'string') {
@@ -243,7 +241,7 @@ _.sortedIndex = function (list, value, iteratee) {
     return binarySearch(_.sortBy(list, iteratee), value);
   } else
     return binarySearch(list, value);
-}
+};
 
 _.once = function (func) {
   var ran = false, memo;
@@ -266,10 +264,10 @@ _.flatten = function (list, bool) {
         res.push(el);
       } else {
         el.forEach(function (el2) {
-          res.push(el2)
-        })
+          res.push(el2);
+        });
       }
-    })
+    });
   } else {
 
     var flattenRecursion = function (arr) {
@@ -282,14 +280,14 @@ _.flatten = function (list, bool) {
         });
 
       }
-    }
+    };
   flattenRecursion(list);
   }
   return res;
 
-}
+};
 
-_.delay = function(iteratee, wait) {
+_.delay = function (iteratee, wait) {
   const args = Array.from(arguments).slice(2);
   
   setTimeout(() => {
@@ -303,29 +301,29 @@ _.shuffle = function (list) {
   while (list.length > 0) {
     let randomNo = getRandomInt(0, list.length);
     shuffled.push(list[randomNo]);
-    list = list.slice(0, randomNo).concat(list.slice(randomNo+1))
+    list = list.slice(0, randomNo).concat(list.slice(randomNo + 1));
   }
   return shuffled;
 
-}
+};
 
 _.invoke = function (list, methodName, ...args) {
   let copy = list.slice();
   const func = _[methodName];
-  for(var key in copy) {
+  for (var key in copy) {
     copy[key] = func.apply(this, [copy[key], ...args]);
   }
-  return copy
-}
+  return copy;
+};
 
-_.intersection = function(arrays) {
+_.intersection = function (arrays) {
   const args = [...arguments];
   const res = [];
-  for(var i = 0; i < args[0].length; i++){
+  for (var i = 0; i < args[0].length; i++) {
     const val = args[0][i];
-  if(
-  _.every(args, function(array) {
-    return _.contains(array, val)
+  if (
+  _.every(args, function (array) {
+    return _.contains(array, val);
   })
 
   ) {
@@ -333,29 +331,29 @@ _.intersection = function(arrays) {
   }
   }
   return res;
-}
+};
 
-_.difference = function(array, others) {
+_.difference = function (array, others) {
   const args = [...arguments].slice(1);
   const res = [];
-  for(var i = 0; i < array.length; i++) {
+  for (var i = 0; i < array.length; i++) {
     const val = array[i];
-    if(
-      _.every(args, function(array) {
+    if (
+      _.every(args, function (array) {
         return !_.contains(array, val);
       })
     )
     res.push(val);
   }
   return res;
-}
+};
 
 
 // _.throttle = function () {
   
 // }
 
-function binarySearch(list, name) {
+function binarySearch (list, name) {
   var s = 0;
   var e = list.length - 1;
   for (var i = 0; i < 10; i++) {

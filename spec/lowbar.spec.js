@@ -13,16 +13,13 @@ describe('_', function () {
   });
 
 
-
-
-
   describe('#identity', function () {
     it('is a function', function () {
       expect(_.identity).to.be.a('function');
     });
 
     it('function should take one argument', function () {
-      expect(_.identity.length).to.equal(1)
+      expect(_.identity.length).to.equal(1);
     });
 
     it('returns the same value that is passed as the argument', function () {
@@ -32,10 +29,6 @@ describe('_', function () {
     });
   });
 });
-
-
-
-
 
 
 describe('#first', function () {
@@ -49,17 +42,12 @@ describe('#first', function () {
     expect(actual).to.equal(expected);
   });
 
-  it('function returns an array of the first n number of elements if n is passed', function () {
+  it ('function returns an array of the first n number of elements if n is passed', function () {
     var expected = [1, 2, 3];
     var actual = _.first([1, 2, 3, 4, 5], 3);
     expect(actual).to.eql(expected);
   });
 });
-
-
-
-
-
 
 
 describe('#last', function () {
@@ -81,7 +69,6 @@ describe('#last', function () {
 });
 
 
-
 describe('#each', function () {
   it('is a function', function () {
     expect(_.each).to.be.a('function');
@@ -90,7 +77,7 @@ describe('#each', function () {
     expect(_.each.length).to.equal(2);
   });
   it('if an object is the first argument, ', function () {
-    function timesTwo(number) { return number * 2 };
+    function timesTwo (number) { return number * 2; };
     var obj = { a: 1, b: 2, c: 3 };
     var actual = _.each(obj, timesTwo);
     expect(actual).to.equal(obj);
@@ -98,21 +85,17 @@ describe('#each', function () {
   it('should test the function runs on each element of the array', function () {
     var spy = sinon.spy();
 
-    _.each('hello', spy)
+    _.each('hello', spy);
     expect(spy.callCount).to.equal(5);
   });
   it('should work when using the values of each', () => {
     const expected = [2, 4, 6];
     const actual = [];
-    _.each([1, 2, 3], function (x) { actual.push(x * 2) })
+    _.each([1, 2, 3], function (x) { actual.push(x * 2); });
     expect(actual).to.eql(expected);
   });
 
 });
-
-
-
-
 
 
 describe('#indexOf', function () {
@@ -152,7 +135,7 @@ describe('#filter', function () {
   });
   it('function should return a new array that pass the predicate argument', function () {
     var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    var func = function isEven(num) { return num % 2 === 0 }
+    var func = function isEven (num) { return num % 2 === 0; };
     var actual = _.filter(arr, func);
     var expected = [2, 4, 6, 8, 10];
     expect(actual).to.eql(expected);
@@ -168,7 +151,7 @@ describe('#reject', function () {
   });
   it('function should return a new array that pass the predicate argument', function () {
     var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    var func = function isEven(num) { return num % 2 === 0 }
+    var func = function isEven (num) { return num % 2 === 0; };
     var actual = _.reject(arr, func);
     var expected = [1, 3, 5, 7, 9];
     expect(actual).to.eql(expected);
@@ -192,9 +175,9 @@ describe('#uniq', function () {
   });
   it('should work if optional iteratee is passed', () => {
     const expected = [2, 4, 8, 6];
-    function timesTwo(x) { return x * 2 };
-    const actual = _.uniq([1, 1, 2, 4, 3, 3, 2, 1], false, timesTwo)
-    expect(actual).to.eql(expected)
+    function timesTwo (x) { return x * 2; };
+    const actual = _.uniq([1, 1, 2, 4, 3, 3, 2, 1], false, timesTwo);
+    expect(actual).to.eql(expected);
   });
 
 });
@@ -207,13 +190,13 @@ describe('#map', function () {
     expect(_.map.length).to.be.above(1);
   });
   it('should return a new array of values created by passing each element to the iteratee', function () {
-    function timesTwo(number, ind, list) { return number * 2 };
+    function timesTwo (number, ind, list) { return number * 2; };
     var expected = [2, 4, 6];
     var actual = _.map([1, 2, 3], timesTwo);
     expect(actual).to.eql(expected);
   });
   it('should return a new object of key value pairs created by passing each value to the iteratee', function () {
-    function timesTwo(number, ind, list) { return number * 2 };
+    function timesTwo (number, ind, list) { return number * 2; };
     var expected = [2, 4, 6];
     var actual = _.map({ a: 1, b: 2, c: 3 }, timesTwo);
     expect(actual).to.eql(expected);
@@ -231,13 +214,13 @@ describe('#pluck', function () {
   it('function should return an empty array if the first argument is not an array', function () {
     var expected = [];
     var actual = _.pluck(1234, 'name');
-    expect(actual).to.eql(expected)
+    expect(actual).to.eql(expected);
   });
   it('function should take an array of objects and return an array of key values in the objects', function () {
     var stooges = [{ name: 'moe', age: 40 }, { name: 'larry', age: 50 }, { name: 'curly', age: 60 }];
-    var expected = ["moe", "larry", "curly"];
+    var expected = ['moe', 'larry', 'curly'];
     var actual = _.pluck(stooges, 'name');
-    expect(actual).to.eql(expected)
+    expect(actual).to.eql(expected);
   });
 
 });
@@ -250,14 +233,14 @@ describe('#reduce', function () {
     expect(_.reduce.length).to.be.above(1);
   });
   it('should sum an array of values to return one number', function () {
-    function add(memo, num) { return memo += num }
+    function add (memo, num) { return memo += num; }
     var expected = 545;
     var actual = _.reduce([34, 23, 342, 123, 23], add);
     expect(actual).to.equal(expected);
   });
 
   it('should return a new array of iteratee values when the starting value is an array', function () {
-    function double(memo, value) {
+    function double (memo, value) {
       memo.push(value * 2);
       return memo;
     };
@@ -266,7 +249,7 @@ describe('#reduce', function () {
     expect(actual).to.eql(expected);
   });
   it('should work for objects', () => {
-    function add(memo, num) { return memo += num }
+    function add (memo, num) { return memo += num; }
     var expected = 545;
     var actual = _.reduce({ a: 34, b: 23, c: 342, d: 123, e: 23 }, add);
     expect(actual).to.equal(expected);
@@ -276,24 +259,24 @@ describe('#reduce', function () {
 
 describe('#extend', function () {
   it('should be a function', function () {
-    expect(_.extend).to.be.a("function");
+    expect(_.extend).to.be.a('function');
   });
   it('should copy shallowly all properties in source object to the destination object', function () {
     expect(_.extend({ name: 'moe' }, { age: 50 })).to.eql({ name: 'moe', age: 50 });
   });
-  it("copies the properties of the source object into the target", function () {
-    var actual = _.extend({}, { name: "Sam" });
-    var expected = { name: "Sam" };
+  it('copies the properties of the source object into the target', function () {
+    var actual = _.extend({}, { name: 'Sam' });
+    var expected = { name: 'Sam' };
     expect(actual).to.eql(expected);
-  })
-  it("overwrites existing properties", function () {
-    var actual = _.extend({}, { name: "joe", name: "Sam" });
-    var expected = { name: "Sam" };
+  });
+  it('overwrites existing properties', function () {
+    var actual = _.extend({}, { name: 'joe', name: 'Sam' });
+    var expected = { name: 'Sam' };
     expect(actual).to.eql(expected);
-  })
-  it("copies properties from multiple source arguments", function () {
-    var actual = _.extend({ name: "sam" }, { name: "Joe" }, { name: "Mauro", age: 27 })
-    var expected = { name: "Mauro", age: 27 }
+  });
+  it('copies properties from multiple source arguments', function () {
+    var actual = _.extend({ name: 'sam' }, { name: 'Joe' }, { name: 'Mauro', age: 27 });
+    var expected = { name: 'Mauro', age: 27 };
     expect(actual).to.eql(expected);
   });
 });
@@ -313,7 +296,7 @@ describe('#contains', function () {
     expect(actual).to.eql(true);
   });
   it('should work for objects', () => {
-    const actual = _.contains({ a: 1, b: 2 }, 2)
+    const actual = _.contains({ a: 1, b: 2 }, 2);
     expect(actual).to.equal(true);
   });
 });
@@ -327,20 +310,20 @@ describe('#every', function () {
     expect(_.every.length).to.be.above(0);
   });
   it('should return true if all the values in the list pass the truth test provided in the second argument', function () {
-    function isEven(num) { return num % 2 === 0; };
+    function isEven (num) { return num % 2 === 0; };
     var expected = false;
     var actual = _.every([2, 4, 5], isEven);
     expect(actual).to.equal(expected);
-    function wordLength(word) { return word.length > 5 };
+    function wordLength (word) { return word.length > 5; };
     var wordsArr = ['helloworld', 'northcoders', 'iamacoder'];
     var actual = _.every(wordsArr, wordLength);
     expect(actual).to.equal(true);
   });
   it('should work for objects', () => {
-    function isEven(num) { return num % 2 === 0; };
+    function isEven (num) { return num % 2 === 0; };
     var actual = _.every({ a: 2, b: 4, c: 10 }, isEven);
     expect(actual).to.equal(true);
-    function wordLength(word) { return word.length > 5 };
+    function wordLength (word) { return word.length > 5; };
     var wordsArr = { a: 'helloworld', b: 'northcoders', c: 'notaclue' };
     var actual = _.every(wordsArr, wordLength);
     expect(actual).to.equal(true);
@@ -356,26 +339,26 @@ describe('#some', () => {
     expect(_.some([1, 2, 3, 4])).to.equal(true);
   });
   it('should take a list as an argument, and return true if just one element of the list passes the truth test', () => {
-    const shouldBeTrue = _.some([5, 10, 20, 50, 100], function (x) { return x > 50 });
-    const shouldBeFalse = _.some([5, 10, 20, 50, 35], function (x) { return x > 50 });
+    const shouldBeTrue = _.some([5, 10, 20, 50, 100], function (x) { return x > 50; });
+    const shouldBeFalse = _.some([5, 10, 20, 50, 35], function (x) { return x > 50; });
     expect(shouldBeTrue).to.equal(true);
     expect(shouldBeFalse).to.equal(false);
   });
   it('should work for objects', () => {
-    const shouldBeTrue = _.some({ a: 10, b: 20, c: 45, d: 500 }, function (x) { return x > 50 });
-    const shouldBeFalse = _.some({ a: 10, b: 20, c: 45, d: 50 }, function (x) { return x > 50 });
+    const shouldBeTrue = _.some({ a: 10, b: 20, c: 45, d: 500 }, function (x) { return x > 50; });
+    const shouldBeFalse = _.some({ a: 10, b: 20, c: 45, d: 50 }, function (x) { return x > 50; });
     expect(shouldBeTrue).to.equal(true);
     expect(shouldBeFalse).to.equal(false);
   });
 });
 describe('#defaults', function () {
   it('should be a function', function () {
-    expect(_.defaults).to.be.a("function");
+    expect(_.defaults).to.be.a('function');
   });
   it('should set defaults', () => {
-    var iceCream = { flavor: "chocolate" };
-    const actual = _.defaults(iceCream, { flavor: "vanilla", sprinkles: "lots" });
-    expect(actual).to.eql({ flavor: "chocolate", sprinkles: "lots" })
+    var iceCream = { flavor: 'chocolate' };
+    const actual = _.defaults(iceCream, { flavor: 'vanilla', sprinkles: 'lots' });
+    expect(actual).to.eql({ flavor: 'chocolate', sprinkles: 'lots' });
   });
 });
 describe('#memoize', function () {
@@ -387,7 +370,7 @@ describe('#memoize', function () {
     expect(speedy).to.be.a('function');
   });
   it('should return a function that does the same thing as the function passed', function () {
-    function fib(n) {
+    function fib (n) {
       if (n < 2) return 1;
       return fib(n - 1) + fib(n - 2);
     }
@@ -397,7 +380,7 @@ describe('#memoize', function () {
     expect(speedyRes).to.equal(normalRes);
   });
   it('should return a faster version of the function passed', function () {
-    function fib(n) {
+    function fib (n) {
       if (n < 2) return 1;
       return fib(n - 1) + fib(n - 2);
     }
@@ -436,7 +419,7 @@ describe('#zip', () => {
   });
   it('should merge arrays together based on index position', () => {
     const actual = _.zip(['moe', 'larry', 'curly'], [30, 40, 50], [true, false, false]);
-    const expected = [["moe", 30, true], ["larry", 40, false], ["curly", 50, false]];
+    const expected = [['moe', 30, true], ['larry', 40, false], ['curly', 50, false]];
     expect(actual).to.eql(expected);
   });
 });
@@ -508,12 +491,12 @@ describe('#shuffle', function () {
 
 describe('#invoke', () => {
   it('is a function', () => {
-    expect(_.invoke).to.be.a('function')
+    expect(_.invoke).to.be.a('function');
   });
   it('should call the method passed by methodName on each element in the list', () => {
     const list = [[1, 2, 3], [4, 5, 6]];
-    const actual = _.invoke(list, 'first', 2)
-    const expected = [[1, 2], [4, 5]]
+    const actual = _.invoke(list, 'first', 2);
+    const expected = [[1, 2], [4, 5]];
     expect(actual).to.eql(expected);
   });
 });
@@ -584,6 +567,5 @@ describe('#delay', function () {
     expect(spy.args[0]).to.eql([5, 3, 4]);
   });
 });
-
 
 

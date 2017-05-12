@@ -12,9 +12,22 @@
     "browser": true,
     "es6": true
   },
-  "plugins": [
-  ],
+  "plugins": [],
   "rules": {
-    "no-console": 0
+    "react/prop-types": 0,
+    "no-console": 0,
+    "space-before-blocks": 1,
+    "arrow-spacing": 1,
+    "keyword-spacing": 1,
+    "space-infix-ops": 1,
+    "space-in-parens": 1,
+    "spaced-comment": 1,
+    "space-before-function-paren": 1,
+    "semi": 1,
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "no-multiple-empty-lines": 1
   }
 }
