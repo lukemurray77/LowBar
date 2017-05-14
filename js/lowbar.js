@@ -141,7 +141,7 @@ _.reduce = function (list, iteratee, memo, context) {
 };
 
 
-_.extend = function (destination, sources) {
+_.extend = function (destination) {
   for (let i = 1; i < arguments.length; i++) {
     for (var key in arguments[i]) {
       destination[key] = arguments[i][key];
@@ -316,7 +316,7 @@ _.invoke = function (list, methodName, ...args) {
   return copy;
 };
 
-_.intersection = function (arrays) {
+_.intersection = function () {
   const args = [...arguments];
   const res = [];
   for (var i = 0; i < args[0].length; i++) {
@@ -333,7 +333,7 @@ _.intersection = function (arrays) {
   return res;
 };
 
-_.difference = function (array, others) {
+_.difference = function (array) {
   const args = [...arguments].slice(1);
   const res = [];
   for (var i = 0; i < array.length; i++) {
